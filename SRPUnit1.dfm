@@ -23,15 +23,28 @@ object Form1: TForm1
       'Info=False;User ID="";Initial Catalog="";Data Source=(localdb)\M' +
       'SSQLLocalDB;Initial File Name="";Server SPN="";Authentication=""' +
       ';Access Token=""'
+    DefaultDatabase = 'master'
     LoginPrompt = False
     Provider = 'MSOLEDBSQL.1'
-    Left = 40
-    Top = 24
+    Left = 712
+    Top = 488
   end
   object ADOCommand1: TADOCommand
     Connection = ADOConnection1
     Parameters = <>
-    Left = 136
-    Top = 24
+    Left = 808
+    Top = 488
+  end
+  object ADOTable1: TADOTable
+    Connection = ADOConnection1
+    TableName = 'probka'
+    Left = 616
+    Top = 480
+  end
+  object ADOTable2: TADOTable
+    Connection = ADOConnection1
+    TableName = 'parametry'
+    Left = 536
+    Top = 480
   end
 end
