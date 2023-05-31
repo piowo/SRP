@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask;
 
 type
   TForm1 = class(TForm)
@@ -14,6 +14,23 @@ type
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     ADODataSet1: TADODataSet;
+    GroupBox1: TGroupBox;
+    DataSource2: TDataSource;
+    ADODataSet2: TADODataSet;
+    DBNazwa: TDBEdit;
+    DBEdit1: TDBEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    DBEdit2: TDBEdit;
+    Masa: TLabel;
+    Objêtoœæ: TLabel;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    Kg: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
