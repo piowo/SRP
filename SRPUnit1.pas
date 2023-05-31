@@ -4,12 +4,16 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Grids,
+  Vcl.DBGrids;
 
 type
   TForm1 = class(TForm)
     ADOConnection1: TADOConnection;
     ADOCommand1: TADOCommand;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    ADODataSet1: TADODataSet;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private

@@ -16,6 +16,19 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 16
+    Top = 16
+    Width = 825
+    Height = 457
+    DataSource = DataSource1
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -23,16 +36,30 @@ object Form1: TForm1
       'Info=False;User ID="";Initial Catalog="";Data Source=(localdb)\M' +
       'SSQLLocalDB;Initial File Name="";Server SPN="";Authentication=""' +
       ';Access Token=""'
-    DefaultDatabase = 'master'
+    DefaultDatabase = 'SRP'
     LoginPrompt = False
     Provider = 'MSOLEDBSQL.1'
-    Left = 712
+    Left = 696
     Top = 488
   end
   object ADOCommand1: TADOCommand
     Connection = ADOConnection1
     Parameters = <>
-    Left = 808
+    Left = 784
+    Top = 488
+  end
+  object DataSource1: TDataSource
+    DataSet = ADODataSet1
+    Left = 480
+    Top = 488
+  end
+  object ADODataSet1: TADODataSet
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    CommandText = 'select * from  probka;'
+    Parameters = <>
+    Left = 600
     Top = 488
   end
 end
