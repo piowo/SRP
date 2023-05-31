@@ -35,16 +35,4 @@ object Form1: TForm1
     Left = 808
     Top = 488
   end
-  object ADOTable1: TADOTable
-    Connection = ADOConnection1
-    TableName = 'probka'
-    Left = 616
-    Top = 480
-  end
-  object ADOTable2: TADOTable
-    Connection = ADOConnection1
-    TableName = 'parametry'
-    Left = 536
-    Top = 480
-  end
 end

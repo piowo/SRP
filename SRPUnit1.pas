@@ -10,8 +10,6 @@ type
   TForm1 = class(TForm)
     ADOConnection1: TADOConnection;
     ADOCommand1: TADOCommand;
-    ADOTable1: TADOTable;
-    ADOTable2: TADOTable;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
