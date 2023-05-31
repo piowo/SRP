@@ -53,16 +53,6 @@ begin
    wykonaj;
 
    resetuj;
-   dp('CREATE TABLE probka (');
-   dp('ID INTEGER NOT NULL IDENTITY(1,1) PRIMARY KEY,');
-   dp('NAZWA VARCHAR(40) NOT NULL,');
-   dp('DATA_UTWORZENIA DATE NOT NULL,');
-   dp('DATA_UKONCZENIA_ANALIZY DATE NOT NULL,');
-   dp('PARAMETRY_ID INTEGER NOT NULL');
-   dp(');');
-   wykonaj;
-
-   resetuj;
    dp('CREATE TABLE parametry (');
    dp('ID INTEGER NOT NULL IDENTITY(1,1) PRIMARY KEY,');
    dp('NAZWA VARCHAR(40) NOT NULL,');
@@ -71,6 +61,16 @@ begin
    dp('MASA INTEGER,');
    dp('OBJETOSC INTEGER,');
    dp('WYGLAD VARCHAR(80)');
+   dp(');');
+   wykonaj;
+
+   resetuj;
+   dp('CREATE TABLE probka (');
+   dp('ID INTEGER NOT NULL IDENTITY(1,1) PRIMARY KEY,');
+   dp('NAZWA VARCHAR(40) NOT NULL,');
+   dp('DATA_UTWORZENIA DATE NOT NULL,');
+   dp('DATA_UKONCZENIA_ANALIZY DATE NOT NULL,');
+   dp('PARAMETRY_ID INTEGER FOREIGN KEY REFERENCES parametry(ID)');
    dp(');');
    wykonaj;
 
