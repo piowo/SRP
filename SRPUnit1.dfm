@@ -2,8 +2,8 @@
   Left = 183
   Top = 103
   Caption = 'SRP - System Rejestracji Pr'#243'bek'
-  ClientHeight = 302
-  ClientWidth = 959
+  ClientHeight = 454
+  ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,9 +16,18 @@
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 16
+    Width = 331
+    Height = 13
+    Caption = 
+      'Kliknij na dan'#261' pr'#243'bk'#281' aby wy'#347'wietli'#263' po prawej stronie jej para' +
+      'metry'
+  end
   object DBGrid1: TDBGrid
     Left = 16
-    Top = 16
+    Top = 40
     Width = 545
     Height = 265
     DataSource = DataSource1
@@ -28,15 +37,32 @@
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'NAZWA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_UTWORZENIA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_UKONCZENIA_ANALIZY'
+        Visible = True
+      end>
   end
   object GroupBox1: TGroupBox
     Left = 583
-    Top = 16
+    Top = 40
     Width = 362
-    Height = 265
+    Height = 353
     Caption = 'Parametry'
     TabOrder = 1
-    object Label1: TLabel
+    object Nazwa: TLabel
       Left = 40
       Top = 56
       Width = 32
@@ -99,6 +125,13 @@
       Height = 13
       Caption = 'kg/(m*s)'
     end
+    object Opis: TLabel
+      Left = 40
+      Top = 264
+      Width = 36
+      Height = 13
+      Caption = 'Wygl'#261'd'
+    end
     object DBNazwa: TDBEdit
       Left = 96
       Top = 53
@@ -106,9 +139,10 @@
       Height = 21
       DataField = 'NAZWA'
       DataSource = DataSource2
+      ReadOnly = True
       TabOrder = 0
     end
-    object DBEdit1: TDBEdit
+    object DBGestosc: TDBEdit
       Left = 95
       Top = 176
       Width = 210
@@ -117,7 +151,7 @@
       DataSource = DataSource2
       TabOrder = 1
     end
-    object DBEdit2: TDBEdit
+    object DBLepkosc: TDBEdit
       Left = 96
       Top = 203
       Width = 209
@@ -126,7 +160,7 @@
       DataSource = DataSource2
       TabOrder = 2
     end
-    object DBEdit3: TDBEdit
+    object DBObjetosc: TDBEdit
       Left = 96
       Top = 149
       Width = 209
@@ -135,7 +169,7 @@
       DataSource = DataSource2
       TabOrder = 3
     end
-    object DBEdit4: TDBEdit
+    object DBMasa: TDBEdit
       Left = 96
       Top = 122
       Width = 209
@@ -143,6 +177,15 @@
       DataField = 'MASA'
       DataSource = DataSource2
       TabOrder = 4
+    end
+    object DBOpis: TDBMemo
+      Left = 96
+      Top = 230
+      Width = 249
+      Height = 89
+      DataField = 'WYGLAD'
+      DataSource = DataSource2
+      TabOrder = 5
     end
   end
   object ADOConnection1: TADOConnection
@@ -171,8 +214,8 @@
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 
-      'select NAZWA, DATA_UTWORZENIA, DATA_UKONCZENIA_ANALIZY'#13#10' from pr' +
-      'obka;'
+      'select NAZWA, DATA_UTWORZENIA, DATA_UKONCZENIA_ANALIZY,PARAMETRY' +
+      '_ID'#13#10'from probka;'
     Parameters = <>
     Left = 648
   end
@@ -181,13 +224,20 @@
     Left = 544
   end
   object ADODataSet2: TADODataSet
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 
-      'select NAZWA, GESTOSC, LEPKOSC, MASA, OBJETOSC, WYGLAD from para' +
-      'metry'
-    Parameters = <>
+      'select NAZWA, GESTOSC, LEPKOSC, MASA, OBJETOSC, WYGLAD '#13#10'from pa' +
+      'rametry'#13#10'where parametry.id = :PARAMETRY_ID;'
+    Parameters = <
+      item
+        Name = 'PARAMETRY_ID'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     Left = 728
   end
 end

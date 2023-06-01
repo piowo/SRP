@@ -18,21 +18,25 @@ type
     DataSource2: TDataSource;
     ADODataSet2: TADODataSet;
     DBNazwa: TDBEdit;
-    DBEdit1: TDBEdit;
-    Label1: TLabel;
+    DBGestosc: TDBEdit;
+    Nazwa: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    DBEdit2: TDBEdit;
+    DBLepkosc: TDBEdit;
     Masa: TLabel;
     Objêtoœæ: TLabel;
-    DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
+    DBObjetosc: TDBEdit;
+    DBMasa: TDBEdit;
     Kg: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label1: TLabel;
+    DBOpis: TDBMemo;
+    Opis: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
   private
     { Private declarations }
     procedure ZacznijTworzycBD;
@@ -98,6 +102,39 @@ begin
   except
     ShowMessage('Blad wykonania SQL');
   end;
+end;
+
+procedure TForm1.DBGrid1CellClick(Column: TColumn);
+const
+  komunikat : string = '<Brak danych>';
+var
+  parametry_id : Variant;
+begin
+  parametry_id := ADODataSet1.FieldByName('PARAMETRY_ID').AsVariant;
+  if VarIsNull(parametry_id) then
+     begin
+        DBNazwa.Text := ADODataSet1.FieldByName('NAZWA').AsString;
+        DBMasa.Text := komunikat;
+        DBObjetosc.Text := komunikat;
+        DBGestosc.Text := komunikat;
+        DBLepkosc.Text := komunikat;
+        DBOpis.Text := komunikat;
+     end
+  else begin
+    with ADODataSet2 do
+      begin
+        Parameters.ParamByName('PARAMETRY_ID').Value := parametry_id;
+        Open;
+
+        DBNazwa.Text := FieldByName('NAZWA').AsString;
+        DBMasa.Text := FieldByName('MASA').AsString;
+        DBObjetosc.Text := FieldByName('OBJETOSC').AsString;
+        DBGestosc.Text := FieldByName('GESTOSC').AsString;
+        DBLepkosc.Text := FieldByName('LEPKOSC').AsString;
+        DBOpis.Text := FieldByName('WYGLAD').AsString;
+      end;
+  end;
+
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
