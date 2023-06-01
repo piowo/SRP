@@ -102,11 +102,6 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="DMUnit1.pas">
-            <Form>DataModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="SRPUnit2.pas">
             <Form>Form2</Form>
             <FormType>dfm</FormType>

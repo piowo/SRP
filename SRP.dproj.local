@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.296,C:\Users\piowo\DelphiProjects\SRP\Unit1.pas=C:\Users\piowo\DelphiProjects\SRP\DMUnit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.209,C:\Users\piowo\DelphiProjects\SRP\SRPUnit1.pas=C:\Users\piowo\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.115,=C:\Users\piowo\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.524,C:\Users\piowo\DelphiProjects\SRP\SRP.dproj=C:\Users\piowo\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.209,C:\Users\piowo\DelphiProjects\SRP\SRPUnit1.dfm=C:\Users\piowo\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.296,C:\Users\piowo\DelphiProjects\SRP\Unit1.dfm=C:\Users\piowo\DelphiProjects\SRP\DMUnit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.287,=C:\Users\piowo\DelphiProjects\SRP\Unit1.pas</Transaction>
+    <Transaction>2023.06.01 23:35:35.127,=C:\Users\piowo\DelphiProjects\SRP\Unit2.pas</Transaction>
+    <Transaction>2023.06.01 23:41:45.565,C:\Users\piowo\DelphiProjects\SRP\SRPUnit2.dfm=C:\Users\piowo\DelphiProjects\SRP\Unit2.dfm</Transaction>
+    <Transaction>2023.06.01 23:41:45.565,C:\Users\piowo\DelphiProjects\SRP\SRPUnit2.pas=C:\Users\piowo\DelphiProjects\SRP\Unit2.pas</Transaction>
+    <Transaction>2023.06.02 01:41:13.565,C:\Users\piowo\DelphiProjects\SRP\DMUnit1.pas=</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="SRPUnit2.pas"/>
+    <File Path="SRPUnit2.dfm"/>
+    <File Path="SRPUnit1.pas"/>
+    <File Path="SRPUnit1.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
