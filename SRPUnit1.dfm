@@ -2,8 +2,8 @@
   Left = 183
   Top = 103
   Caption = 'SRP - System Rejestracji Pr'#243'bek'
-  ClientHeight = 505
-  ClientWidth = 964
+  ClientHeight = 490
+  ClientWidth = 969
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -26,10 +26,10 @@
       'metry'
   end
   object DBGrid1: TDBGrid
-    Left = 8
+    Left = 24
     Top = 35
     Width = 545
-    Height = 430
+    Height = 390
     DataSource = DataSource1
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -59,7 +59,7 @@
     Left = 583
     Top = 40
     Width = 362
-    Height = 353
+    Height = 385
     Caption = 'Parametry'
     TabOrder = 1
     object Nazwa: TLabel
@@ -149,6 +149,7 @@
       Height = 21
       DataField = 'GESTOSC'
       DataSource = DataSource2
+      ReadOnly = True
       TabOrder = 1
     end
     object DBLepkosc: TDBEdit
@@ -158,6 +159,7 @@
       Height = 21
       DataField = 'LEPKOSC'
       DataSource = DataSource2
+      ReadOnly = True
       TabOrder = 2
     end
     object DBObjetosc: TDBEdit
@@ -167,6 +169,7 @@
       Height = 21
       DataField = 'OBJETOSC'
       DataSource = DataSource2
+      ReadOnly = True
       TabOrder = 3
     end
     object DBMasa: TDBEdit
@@ -176,6 +179,7 @@
       Height = 21
       DataField = 'MASA'
       DataSource = DataSource2
+      ReadOnly = True
       TabOrder = 4
     end
     object DBOpis: TDBMemo
@@ -185,17 +189,18 @@
       Height = 89
       DataField = 'WYGLAD'
       DataSource = DataSource2
+      ReadOnly = True
       TabOrder = 5
     end
   end
-  object ZapiszParametry: TButton
-    Left = 580
-    Top = 416
-    Width = 365
+  object WprowadzParametry: TButton
+    Left = 24
+    Top = 440
+    Width = 545
     Height = 25
-    Caption = 'Zapisz Parametry'
+    Caption = 'Wprowad'#378' parametry dla wybranej pr'#243'bki'
     TabOrder = 2
-    OnClick = ZapiszParametryClick
+    OnClick = WprowadzParametryClick
   end
   object ADOConnection1: TADOConnection
     Connected = True
@@ -223,8 +228,8 @@
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 
-      'select NAZWA, DATA_UTWORZENIA, DATA_UKONCZENIA_ANALIZY,PARAMETRY' +
-      '_ID'#13#10'from probka;'
+      'select ID, NAZWA, DATA_UTWORZENIA, DATA_UKONCZENIA_ANALIZY,PARAM' +
+      'ETRY_ID'#13#10'from probka;'
     Parameters = <>
     Left = 648
   end
@@ -233,6 +238,7 @@
     Left = 544
   end
   object ADODataSet2: TADODataSet
+    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 

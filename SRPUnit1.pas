@@ -34,31 +34,34 @@ type
     Label1: TLabel;
     DBOpis: TDBMemo;
     Opis: TLabel;
-    ZapiszParametry: TButton;
+    WprowadzParametry: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
-    procedure ZapiszParametryClick(Sender: TObject);
+    procedure WprowadzParametryClick(Sender: TObject);
   private
     { Private declarations }
+
+  public
+    { Public declarations }
     polecenie : string;
 
     procedure Resetuj;
     procedure DP(pol : string);  //dodaj lancuch polecenia
     //ustaw wartosc parametru
     procedure UP(nazwa_param :string; wartosc_param : Variant);
+    procedure Wprowadz;
     procedure Wykonaj;
 
     procedure ZacznijTworzycBD;
-  public
-    { Public declarations }
+
   end;
 
 var
   Form1: TForm1;
 
 implementation
-
+uses SRPUnit2;
 {$R *.dfm}
 
 procedure TForm1.Resetuj;
@@ -76,9 +79,18 @@ begin
    ADOCommand1.Parameters.ParamByName(nazwa_param).Value := wartosc_param;
 end;
 
+procedure TForm1.WprowadzParametryClick(Sender: TObject);
+begin
+  Form2.Show;
+end;
+
+procedure TForm1.Wprowadz;
+begin
+   ADOCommand1.CommandText := polecenie;
+end;
+
 procedure TForm1.Wykonaj;
 begin
-  ADOCommand1.CommandText := polecenie;
   ADOCommand1.Execute;
 end;
 
@@ -87,6 +99,7 @@ begin
   try
    Resetuj;
    dp('USE SRP;');
+   Wprowadz;
    Wykonaj;
 
    Resetuj;
@@ -99,6 +112,7 @@ begin
    dp('OBJETOSC INTEGER,');
    dp('WYGLAD VARCHAR(80)');
    dp(');');
+   Wprowadz;
    Wykonaj;
 
    Resetuj;
@@ -109,21 +123,12 @@ begin
    dp('DATA_UKONCZENIA_ANALIZY DATE NOT NULL,');
    dp('PARAMETRY_ID INTEGER FOREIGN KEY REFERENCES parametry(ID)');
    dp(');');
+   Wprowadz;
    Wykonaj;
 
   except
     ShowMessage('Blad wykonania SQL');
   end;
-end;
-
-procedure TForm1.ZapiszParametryClick(Sender: TObject);
-begin
-if
-  MessageDlg('Czy jesteœ pewien ?', mtConfirmation, [mbYes, mbNo], 0, mbYes) = mrYes
-  then
-   begin
-
-   end;
 end;
 
 procedure TForm1.DBGrid1CellClick(Column: TColumn);
