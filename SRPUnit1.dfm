@@ -2,7 +2,7 @@
   Left = 183
   Top = 103
   Caption = 'SRP - System Rejestracji Pr'#243'bek'
-  ClientHeight = 454
+  ClientHeight = 505
   ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,10 +26,10 @@
       'metry'
   end
   object DBGrid1: TDBGrid
-    Left = 16
-    Top = 40
+    Left = 8
+    Top = 35
     Width = 545
-    Height = 265
+    Height = 430
     DataSource = DataSource1
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -188,6 +188,15 @@
       TabOrder = 5
     end
   end
+  object ZapiszParametry: TButton
+    Left = 580
+    Top = 416
+    Width = 365
+    Height = 25
+    Caption = 'Zapisz Parametry'
+    TabOrder = 2
+    OnClick = ZapiszParametryClick
+  end
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -227,8 +236,8 @@
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 
-      'select NAZWA, GESTOSC, LEPKOSC, MASA, OBJETOSC, WYGLAD '#13#10'from pa' +
-      'rametry'#13#10'where parametry.id = :PARAMETRY_ID;'
+      'select id,NAZWA, GESTOSC, LEPKOSC, MASA, OBJETOSC, WYGLAD '#13#10'from' +
+      ' parametry where id = :PARAMETRY_ID;'
     Parameters = <
       item
         Name = 'PARAMETRY_ID'
