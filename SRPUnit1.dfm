@@ -209,7 +209,7 @@
       'Info=False;User ID="";Initial Catalog="";Data Source=(localdb)\M' +
       'SSQLLocalDB;Initial File Name="";Server SPN="";Authentication=""' +
       ';Access Token=""'
-    DefaultDatabase = 'SRP'
+    DefaultDatabase = 'master'
     LoginPrompt = False
     Provider = 'MSOLEDBSQL.1'
     Left = 824
@@ -224,7 +224,6 @@
     Left = 472
   end
   object ADODataSet1: TADODataSet
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 
@@ -238,7 +237,6 @@
     Left = 544
   end
   object ADODataSet2: TADODataSet
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     CommandText = 

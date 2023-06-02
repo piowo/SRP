@@ -53,7 +53,7 @@
   object Kg: TLabel
     Left = 287
     Top = 69
-    Width = 12
+    Width = 11
     Height = 13
     Caption = 'kg'
   end
@@ -88,7 +88,7 @@
   object EdNazwa: TLabel
     Left = 136
     Top = 32
-    Width = 193
+    Width = 44
     Height = 13
     Caption = 'EdNazwa'
   end
@@ -143,7 +143,6 @@
     OnClick = ZapiszParametryClick
   end
   object ADODataSet3: TADODataSet
-    Active = True
     Connection = Form1.ADOConnection1
     CursorType = ctStatic
     CommandText = 'select ID from parametry where NAZWA = :NAZWA;'

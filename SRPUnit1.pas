@@ -46,13 +46,22 @@ type
     { Public declarations }
     polecenie : string;
 
+    //przygotuj ³añcuch polecenia
     procedure Resetuj;
-    procedure DP(pol : string);  //dodaj lancuch polecenia
+
+    //dodaj lancuch polecenia
+    procedure DP(pol : string);
+
     //ustaw wartosc parametru
     procedure UP(nazwa_param :string; wartosc_param : Variant);
+
+    //wprowadŸ ³añcuch polecenia do kontenera obslugi BD
     procedure Wprowadz;
+
+    //wykonaj polecenie w BD
     procedure Wykonaj;
 
+    //utwórz bazê danych i potrzebne tabele
     procedure ZacznijTworzycBD;
 
   end;
@@ -61,7 +70,9 @@ var
   Form1: TForm1;
 
 implementation
+
 uses SRPUnit2;
+
 {$R *.dfm}
 
 procedure TForm1.Resetuj;
@@ -106,10 +117,10 @@ begin
    dp('CREATE TABLE parametry (');
    dp('ID INTEGER NOT NULL IDENTITY(1,1) PRIMARY KEY,');
    dp('NAZWA VARCHAR(40) NOT NULL,');
-   dp('GESTOSC INTEGER,');
-   dp('LEPKOSC INTEGER,');
-   dp('MASA INTEGER,');
-   dp('OBJETOSC INTEGER,');
+   dp('GESTOSC DECIMAL(6,3),');
+   dp('LEPKOSC DECIMAL(6,3),');
+   dp('MASA DECIMAL(6,3),');
+   dp('OBJETOSC DECIMAL(6,3),');
    dp('WYGLAD VARCHAR(80)');
    dp(');');
    Wprowadz;
@@ -126,6 +137,17 @@ begin
    Wprowadz;
    Wykonaj;
 
+   Resetuj;
+   dp('INSERT INTO parametry(NAZWA,MASA,OBJETOSC,GESTOSC,LEPKOSC,WYGLAD) ');
+   dp('VALUES (''Probka1'',10.0,5.0,2.0,2.456,''Próbka czysta, klarowna'');');
+   Wprowadz;
+   Wykonaj;
+
+   Resetuj;
+   dp('INSERT INTO probka(NAZWA,DATA_UTWORZENIA,DATA_UKONCZENIA_ANALIZY,PARAMETRY_ID) ');
+   dp('VALUES (''Probka1'',''02.06.2023'',''03.06.2023'',1);');
+   Wprowadz;
+   Wykonaj;
   except
     ShowMessage('Blad wykonania SQL');
   end;
@@ -180,6 +202,11 @@ begin
     ZacznijTworzycBD;
   except
   end;
+   ADOConnection1.Connected := False;
+   ADOConnection1.DefaultDatabase := 'SRP';
+   ADOConnection1.Connected := True;
+   ADODataSet1.Active := True;
+   ADODataSet2.Active := True;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);

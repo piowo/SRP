@@ -111,7 +111,8 @@ if
         Wykonaj;
       end;
     except
-     ShowMessage('B³¹d wykonania SQL!');
+     ShowMessage('B³¹d wykonania SQL!'+chr(13)+chr(10)+
+                'Prawdopodobnie u¿y³eœ nieprawid³owy format danych!');
     end;
    end;
 
@@ -132,6 +133,7 @@ var
   parametry_id : Variant;
 
 begin
+  ADODataSet3.Active := True;
   EdNazwa.Caption := Form1.ADODataSet1.FieldByName('NAZWA').Value;
   parametry_id := Form1.ADODataSet1.FieldByName('PARAMETRY_ID').AsVariant;
   if VarIsNull(parametry_id) then
